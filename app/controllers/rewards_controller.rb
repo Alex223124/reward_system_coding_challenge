@@ -17,7 +17,8 @@ class RewardsController < ApplicationController
     parse_input = Services::Parse::Input.new(raw_post)
     parse_input.perform
 
-    recs = Services::Parse::Recommendations::FilterInvalid.new(parse_input.acceptance_events, parse_input.recommendations).perform
+    recs = Services::Parse::Recommendations::FilterInvalid.new(parse_input.acceptance_events,
+                                                               parse_input.recommendations).perform
 
     invitation_tree = Services::InvitationTrees::Create.new(recs)
     invitation_tree.perform
