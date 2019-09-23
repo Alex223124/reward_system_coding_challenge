@@ -17,4 +17,5 @@ end
 group :test, :development do
   gem "rack-test", require: "rack/test"
   gem "rspec"
+  gem "factory_bot"
 end
