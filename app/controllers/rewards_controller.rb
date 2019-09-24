@@ -7,13 +7,14 @@ class RewardsController < ApplicationController
   helpers do
 
     def raw_post
-      request.body.read
+      @raw_post ||= request.body.read
     end
 
   end
 
   post '/rewards/calculate' do
     raise BlankInput if raw_post.empty?
+
     parse_input = Services::Parse::Input.new(raw_post)
     parse_input.perform
 
