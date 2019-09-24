@@ -53,8 +53,11 @@ class Services::Points::Calculate
   end
 
   def points_for_one_invite(level)
-    denominator = BigDecimal("#{level - 1}")
-    ONE_STEP_COEFFICIENT / denominator
+    ONE_STEP_COEFFICIENT / denominator(level)
+  end
+
+  def denominator(level)
+    BigDecimal("#{level - 1}")
   end
 
   def subtree_copy(node)
